@@ -115,8 +115,14 @@ var Generator = yeoman.generators.Base.extend({
       this.copy('_karma.conf.js', 'karma.conf.js');
       this.copy('_webpack.config.js', 'webpack.config.js');
       this.copy('_webpack.config.dev.js', 'webpack.config.dev.js');
-      this.template('_package.json', 'package.json');
       this.template('_README.md', 'README.md');
+
+      if (this.isReact) {
+        this.template('_package_react.json', 'package.json');
+      }
+      else {
+        this.template('_package.json', 'package.json');
+      }
 
       if (this.createLicence) {
         this.copy('_LICENSE.txt', 'LICENSE.txt');

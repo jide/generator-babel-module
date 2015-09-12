@@ -22,6 +22,9 @@
     "server-test": "webpack-dev-server --host 0.0.0.0 --port 3001 --config webpack.config.test.js --colors",
     "dev": "npm run server-dev"
   },
+  "dependencies": {
+    "react": "*"
+  },
   "devDependencies": {
     "babel": "*",
     "babel-core": "*",
