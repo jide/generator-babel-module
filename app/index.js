@@ -109,49 +109,49 @@ var Generator = yeoman.generators.Base.extend({
 
   writing: {
     project: function() {
-      this.copy('babelrc', '.babelrc');
-      this.copy('editorconfig', '.editorconfig');
-      this.copy('eslintignore', '.eslintignore');
-      this.copy('eslintrc', '.eslintrc');
-      this.copy('gitignore', '.gitignore');
-      this.copy('npmignore', '.npmignore');
-      this.copy('_karma.conf.js', 'karma.conf.js');
-      this.copy('_webpack.config.js', 'webpack.config.js');
-      this.copy('_webpack.config.dev.js', 'webpack.config.dev.js');
-      this.template('_README.md', 'README.md');
+      this.copy('.babelrc', '.babelrc');
+      this.copy('.editorconfig', '.editorconfig');
+      this.copy('.eslintignore', '.eslintignore');
+      this.copy('.eslintrc', '.eslintrc');
+      this.copy('.gitignore', '.gitignore');
+      this.copy('.npmignore', '.npmignore');
+      this.copy('karma.conf.js', 'karma.conf.js');
+      this.copy('webpack.config.js', 'webpack.config.js');
+      this.copy('webpack.config.dev.js', 'webpack.config.dev.js');
+      this.template('README.md', 'README.md');
 
       if (this.isReact) {
-        this.template('_package_react.json', 'package.json');
+        this.template('package.react.json', 'package.json');
       }
       else {
-        this.template('_package.json', 'package.json');
+        this.template('package.json', 'package.json');
       }
 
       if (this.createLicence) {
-        this.copy('_LICENSE.txt', 'LICENSE.txt');
+        this.copy('LICENSE.txt', 'LICENSE.txt');
       }
     },
     component: function() {
-      this.template('src/_index.js', 'src/index.js');
+      this.template('src/index.js', 'src/index.js');
       if (this.isReact) {
-        this.template('src/_Component_react.js', 'src/' + this.componentName + '.js');
+        this.template('src/Component.react.js', 'src/' + this.componentName + '.js');
       }
       else {
-        this.template('src/_Component.js', 'src/' + this.componentName + '.js');
+        this.template('src/Component.js', 'src/' + this.componentName + '.js');
       }
     },
     test: function() {
-      this.copy('test/_test.html', 'test/test.html');
+      this.copy('test/test.html', 'test/test.html');
     },
     demo: function() {
-      this.copy('demo/_index.html', 'demo/index.html');
-      this.copy('demo/_webpack.config.dev.js', 'demo/webpack.config.dev.js');
+      this.copy('demo/index.html', 'demo/index.html');
+      this.copy('demo/webpack.config.dev.js', 'demo/webpack.config.dev.js');
 
       if (this.isReact) {
-        this.template('demo/_app_react.js', 'demo/app.js');
+        this.template('demo/app.react.js', 'demo/app.js');
       }
       else {
-        this.template('demo/_app.js', 'demo/app.js');
+        this.template('demo/app.js', 'demo/app.js');
       }
     }
   },
