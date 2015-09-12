@@ -1,6 +1,6 @@
 {
   "name": "generator-babel-module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A yeoman generator for babel and optionally react module",
   "files": [
     "app"
