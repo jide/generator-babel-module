@@ -131,7 +131,7 @@ var Generator = yeoman.generators.Base.extend({
         this.template('src/_Component.js', 'src/' + this.componentName + '.js');
       }
     },
-    demo: function() {
+    test: function() {
       this.copy('test/_test.html', 'test/test.html');
     },
     demo: function() {
