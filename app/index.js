@@ -25,19 +25,11 @@ var Generator = yeoman.generators.Base.extend({
       name: 'projectName',
       message: 'First, what is the name of your module ?',
       default: 'My Component'
-    }, {
-      type: 'confirm',
-      name: 'isReact',
-      message: 'Is this a react component ?',
-      default: true
     }];
 
     this.prompt(prompts, function (props) {
       _.extend(this, props);
       this.packageName = _.kebabCase(_.deburr(this.projectName));
-      if (this.isReact) {
-        this.packageName = 'react-' + this.packageName;
-      }
       this.componentName = _.capitalize(_.camelCase(this.projectName));
       this.currentYear = new Date().getFullYear();
       done();
@@ -53,14 +45,20 @@ var Generator = yeoman.generators.Base.extend({
       message: 'What is the ClassName for your component ?',
       default: this.componentName
     }, {
+      type: 'confirm',
+      name: 'isReact',
+      message: 'Is this a react component ?',
+      default: true
+    }, {
       type: 'input',
       name: 'packageName',
       message: 'What will the npm package name be ?',
-      default: this.packageName
+      default: this.isReact ? 'react-' + this.packageName : this.packageName
     }, {
       type: 'input',
       name: 'developerName',
-      message: 'What is your name ? (for copyright notice, etc.)'
+      message: 'What is your name ? (for copyright notice, etc.)',
+      default: this.user && this.user.git && this.user.git.name && this.user.git.name()
     }];
 
     this.prompt(prompts, function (props) {
@@ -76,12 +74,17 @@ var Generator = yeoman.generators.Base.extend({
       type: 'input',
       name: 'ghUser',
       message: 'What is your GitHub Username ?',
-      default: _.capitalize(_.camelCase(this.developerName))
+      default: this.user && this.user.git && this.user.git.email && this.user.git.email().split('.')[0].split('@')[0]
     }, {
       type: 'input',
       name: 'ghRepo',
       message: 'What is the name of the GitHub repo this will be published at ?',
       default: this.packageName
+    }, {
+      type: 'confirm',
+      name: 'createGit',
+      message: 'Init git ?',
+      default: true
     }, {
       type: 'confirm',
       name: 'createDirectory',
@@ -155,6 +158,10 @@ var Generator = yeoman.generators.Base.extend({
 
   install: function() {
     this.npmInstall();
+
+    if (this.createGit) {
+      this.spawnCommand('git', ['init']);
+    }
   },
 
   end: function() {
