@@ -41,7 +41,7 @@ var Generator = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'packageName',
+      name: 'componentName',
       message: 'What is the ClassName for your component ?',
       default: this.componentName
     }, {
@@ -49,16 +49,6 @@ var Generator = yeoman.generators.Base.extend({
       name: 'isReact',
       message: 'Is this a react component ?',
       default: true
-    }, {
-      type: 'input',
-      name: 'packageName',
-      message: 'What will the npm package name be ?',
-      default: this.isReact ? 'react-' + this.packageName : this.packageName
-    }, {
-      type: 'input',
-      name: 'developerName',
-      message: 'What is your name ? (for copyright notice, etc.)',
-      default: this.user && this.user.git && this.user.git.name && this.user.git.name()
     }];
 
     this.prompt(prompts, function (props) {
@@ -71,6 +61,16 @@ var Generator = yeoman.generators.Base.extend({
     var done = this.async();
 
     var prompts = [{
+      type: 'input',
+      name: 'packageName',
+      message: 'What will the npm package name be ?',
+      default: this.isReact ? 'react-' + this.packageName.replace('-', '') : this.packageName
+    }, {
+      type: 'input',
+      name: 'developerName',
+      message: 'What is your name ? (for copyright notice, etc.)',
+      default: this.user && this.user.git && this.user.git.name && this.user.git.name()
+    }, {
       type: 'input',
       name: 'ghUser',
       message: 'What is your GitHub Username ?',
