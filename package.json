@@ -1,0 +1,34 @@
+{
+  "name": "generator-babel-module",
+  "version": "0.0.4",
+  "description": "A yeoman generator for babel and optionally react module",
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "babel",
+    "react",
+    "component"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.20.2"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jide/generator-babel-module.git"
+  },
+  "author": "Julien De Luca <jide.fr@gmail.com> (http://jide.fr)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jide/generator-babel-module/issues"
+  },
+  "homepage": "https://github.com/jide/generator-babel-module#readme"
+}
