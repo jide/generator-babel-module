@@ -109,12 +109,12 @@ var Generator = yeoman.generators.Base.extend({
 
   writing: {
     project: function() {
-      this.copy('.babelrc', '.babelrc');
-      this.copy('.editorconfig', '.editorconfig');
-      this.copy('.eslintignore', '.eslintignore');
-      this.copy('.eslintrc', '.eslintrc');
-      this.copy('.gitignore', '.gitignore');
-      this.copy('.npmignore', '.npmignore');
+      this.copy('babelrc', '.babelrc');
+      this.copy('editorconfig', '.editorconfig');
+      this.copy('eslintignore', '.eslintignore');
+      this.copy('eslintrc', '.eslintrc');
+      this.copy('gitignore', '.gitignore');
+      this.copy('npmignore', '.npmignore');
       this.copy('karma.conf.js', 'karma.conf.js');
       this.copy('webpack.config.js', 'webpack.config.js');
       this.copy('webpack.config.dev.js', 'webpack.config.dev.js');
